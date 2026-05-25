@@ -8,7 +8,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <header>
+  <header class="site-header">
+    <a href="<?php echo esc_url(home_url()); ?>">
+      <img src="<?php echo esc_attr(get_theme_file_uri('assets/images/logo.svg')); ?>" alt="Nathalie Mota">
+    </a>
     <nav>
       <?php
       wp_nav_menu([
@@ -19,4 +22,4 @@
       ?>
     </nav>
   </header>
-  <main>
+  <main class="site-main">

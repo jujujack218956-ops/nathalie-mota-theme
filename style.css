@@ -80,7 +80,7 @@ Text Domain: nathalie-mota
     --color-white:      #FFFFFF;
 
     /* Layout */
-    --header-height:   60px;
+    --header-height:   80px;
     --container-max:   1200px;
     --grid-gap:        6px;
 }
@@ -152,4 +152,47 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* ============================================
+   HEADER & LOGO
+   ============================================ */
+
+.site-header {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 150px;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 14px 10px rgba(0, 0, 0, 0.03);
+}
+
+.site-header a {
+    display: flex;
+    align-items: center;
+}
+
+.site-header img {
+    height: 20px;
+    width: auto;
+    display: block;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.main-menu a {
+    font-family: var(--font-title);
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--color-black);
+    transition: color 0.3s ease;
+}
+
+.main-menu a:hover {
+    color: var(--color-red);
 }
