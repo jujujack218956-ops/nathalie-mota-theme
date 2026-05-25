@@ -81,6 +81,7 @@ Text Domain: nathalie-mota
 
     /* Layout */
     --header-height:   80px;
+    --footer-height:   40px;
     --container-max:   1200px;
     --grid-gap:        6px;
 }
@@ -195,4 +196,20 @@ img {
 
 .main-menu a:hover {
     color: var(--color-red);
+}
+
+.footer-container {
+    height: var(--footer-height);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-black);
+    font-family: var(--font-title);
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--color-black);
+
 }
