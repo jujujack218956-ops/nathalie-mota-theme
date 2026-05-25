@@ -1,4 +1,11 @@
 <?php
+// Chargement du thème
+function nathalie_mota_setup()
+{
+  add_theme_support('title-tag');
+  register_nav_menu('main-menu', 'Menu principal');
+}
+add_action('after_setup_theme', 'nathalie_mota_setup');
 // Chargement des styles et scripts
 function nathalie_mota_enqueue()
 {
