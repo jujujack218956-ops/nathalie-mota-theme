@@ -18,6 +18,9 @@
 
 </footer>
 
+<?php get_template_part('template-parts/modal-contact'); ?>
+<!-- Inclusion du template de la modale de contact -->
+
 <?php wp_footer(); ?>
 <!-- wp_footer() : Hook WordPress essentiel avant la fermeture du </body>
      pour charger les scripts JavaScript et permettre aux plugins d'injecter du contenu
