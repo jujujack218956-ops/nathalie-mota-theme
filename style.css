@@ -69,28 +69,30 @@ Text Domain: nathalie-mota
     --font-body: 'Poppins', sans-serif;
 
     /* Couleurs — valeurs exactes Figma */
-    --color-red:        #E00000;
-    --color-red-2:      #FE5858;
-    --color-red-3:      #FFD6D6;
-    --color-black:      #000000;
-    --color-blue-dark:  #313144;
-    --color-grey-dark:  #C4C4C4;
-    --color-grey-mid:   #D8D8D8;
-    --color-grey-light: #E5E5E5;
-    --color-white:      #FFFFFF;
+    --color-red: #E00000;
+    --color-red-2: #FE5858;
+    --color-red-3: #FFD6D6;
+    --color-black: #000000;
+    --color-blue-dark: #313144;
+    --color-grey-dark: #C4C4C4;
+    --color-grey-mid: #D8D8D8;
+    --color-grey-light: #B8B8C2;
+    --color-white: #FFFFFF;
 
     /* Layout */
-    --header-height:   80px;
-    --footer-height:   40px;
-    --container-max:   1200px;
-    --grid-gap:        6px;
+    --header-height: 80px;
+    --footer-height: 40px;
+    --container-max: 1200px;
+    --grid-gap: 6px;
 }
 
 /* ============================================
    RESET & BASE
    ============================================ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -247,26 +249,28 @@ img {
     flex-direction: column;
     align-items: center;
     background-color: var(--color-white);
-    padding: 30px;
-    padding-top:12rem;
+    padding: 30vh;
+    padding-top: 8rem;
     border: 5px solid var(--color-black);
-    width: 45%;
+    width: 50%;
     height: 90vh;
     position: relative;
     overflow: hidden;
+    overflow-y: auto;
 }
 
 .modal-header p {
-    position:absolute;
+    position: absolute;
     top: 0;
     left: -30px;
     width: 150%;
     font-family: var(--font-title);
     font-style: italic;
-    font-size:3rem;
+    font-size: 3.3rem;
     text-transform: uppercase;
+    line-height: 0.9;
     overflow: visible;
-    }
+}
 
 .wpcf7-submit {
     margin-top: 20px;
@@ -281,9 +285,28 @@ img {
     cursor: pointer;
     box-shadow: 0 2px 1px 0px rgba(0, 0, 0, 0.02);
     transition: ease-in-out 0.5s;
-    }
-    
+}
+
 .wpcf7-submit:hover {
     background-color: var(--color-black);
     color: var(--color-white);
-    }
+}
+
+.wpcf7-form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-grey-light);
+    border-radius: 8px;
+    font-family: var(--font-title);
+    font-size: 14px;
+}
+
+.wpcf7 label {
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--color-black);
+    margin-bottom: 5px;
+    display: block;
+}
