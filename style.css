@@ -234,14 +234,14 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+    z-index: 10;
 }
 
 .modal-contact {
@@ -252,7 +252,6 @@ img {
     padding: 30vh;
     padding-top: 8rem;
     border: 5px solid var(--color-black);
-    width: 50%;
     height: 90vh;
     position: relative;
     overflow: hidden;

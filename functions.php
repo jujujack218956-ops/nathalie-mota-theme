@@ -17,3 +17,11 @@ function nathalie_mota_enqueue()
   );
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue');
+
+wp_enqueue_script(
+  'nathalie-mota-scripts',
+  get_stylesheet_directory_uri() . '/js/scripts.js',
+  [],
+  '1.0.0',
+  true
+);
