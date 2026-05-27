@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
       menuToggleButton.setAttribute('aria-expanded', !isExpanded);
       navMobile.classList.toggle('active');
       menuToggleButton.classList.toggle('active');
+      document.body.classList.toggle('menu-open',);
     });
   }
 
