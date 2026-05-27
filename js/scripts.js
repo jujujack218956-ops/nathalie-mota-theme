@@ -6,14 +6,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.querySelector('.menu-toggle');
 
   // Ouverture via clic sur contact
-  const contactLink = document.querySelector('.contact-link a');
-  if (contactLink && modalOverlay) {
-    contactLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      modalOverlay.classList.add('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
-    });
-  }
+  const contactLinks = document.querySelectorAll('.contact-link a');
+  contactLinks.forEach(function (contactLink) {
+    if (contactLink && modalOverlay) {
+      contactLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation(); // empêche la propagation du clic
+        modalOverlay.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        // Fermer le menu mobile si ouvert pour afficher la modale sur mobile
+        const mobilePanel = document.querySelector('.mobile-panel');
+        const menuToggleBtn = document.querySelector('.menu-toggle');
+        if (mobilePanel) mobilePanel.classList.remove('active');
+        if (menuToggleBtn) menuToggleBtn.classList.remove('active');
+      });
+    }
+  });
 
   // Fermeture via bouton close
   if (modalClose && modalOverlay) {
