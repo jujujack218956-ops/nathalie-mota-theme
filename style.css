@@ -419,5 +419,7 @@ img {
         text-transform: uppercase;
         list-style: none;
         color: var(--color-white);
+        text-align: center;
+        line-height: 2.2;
     }
 }
