@@ -8,21 +8,20 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+  <!-- Header principal — visible par défaut -->
   <header class="site-header">
     <a href="<?php echo esc_url(home_url()); ?>">
       <img src="<?php echo esc_attr(get_theme_file_uri('assets/images/logo.svg')); ?>" alt="Nathalie Mota">
     </a>
     <nav>
-      <?php
-      wp_nav_menu([
+      <?php wp_nav_menu([
         'theme_location' => 'main-menu',
         'container' => false,
         'menu_class' => 'main-menu',
-      ]);
-      ?>
+      ]); ?>
     </nav>
-
-    <!-- Bouton de menu mobile -->
+    <!-- Bouton burger — visible uniquement sur mobile -->
     <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false">
       <span class="sr-only">Ouvrir le menu mobile</span>
       <span class="hamburger"><svg width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,19 +33,33 @@
       <span class="close-burger"><svg width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M23.1905 0.767303L3.86027 16.9673C3.50458 17.2654 3.45818 17.7957 3.75659 18.1509C4.05506 18.5061 4.58594 18.5524 4.94157 18.2544L24.2718 2.05437C24.6275 1.75627 24.6739 1.22605 24.3755 0.870847C24.0771 0.515549 23.5462 0.46921 23.1905 0.767303Z" fill="black" />
           <path d="M3.64474 1.97729L22.9778 18.1797C23.3336 18.4779 23.8642 18.4318 24.1622 18.0771C24.4602 17.7223 24.4134 17.1924 24.0577 16.8943L4.72462 0.691923C4.36893 0.393831 3.83833 0.439755 3.54026 0.794541C3.24219 1.14933 3.28905 1.6792 3.64474 1.97729Z" fill="black" />
-        </svg>
-      </span>
+        </svg></span>
     </button>
+  </header>
+
+
+  <!-- Panel mobile — slide depuis la droite au clic sur le burger -->
+  <div class="mobile-panel">
+    <!-- Header du panel mobile avec logo + croix -->
+    <div class="mobile-panel-header">
+      <a href="<?php echo esc_url(home_url()); ?>">
+        <img src="<?php echo esc_attr(get_theme_file_uri('assets/images/logo.svg')); ?>" alt="Nathalie Mota">
+      </a>
+      <button class="menu-toggle-close" aria-label="Fermer le menu">
+        <svg width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.1905 0.767303L3.86027 16.9673C3.50458 17.2654 3.45818 17.7957 3.75659 18.1509C4.05506 18.5061 4.58594 18.5524 4.94157 18.2544L24.2718 2.05437C24.6275 1.75627 24.6739 1.22605 24.3755 0.870847C24.0771 0.515549 23.5462 0.46921 23.1905 0.767303Z" fill="black" />
+          <path d="M3.64474 1.97729L22.9778 18.1797C23.3336 18.4779 23.8642 18.4318 24.1622 18.0771C24.4602 17.7223 24.4134 17.1924 24.0577 16.8943L4.72462 0.691923C4.36893 0.393831 3.83833 0.439755 3.54026 0.794541C3.24219 1.14933 3.28905 1.6792 3.64474 1.97729Z" fill="black" />
+        </svg>
+      </button>
+    </div>
 
     <div class="nav-mobile">
-      <?php
-      wp_nav_menu([
+      <?php wp_nav_menu([
         'theme_location' => 'main-menu',
         'container' => false,
         'menu_class' => 'main-menu-mobile',
-      ]);
-      ?>
+      ]); ?>
     </div>
-  </header>
+  </div>
 
   <main class="site-main">

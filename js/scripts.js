@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Menu mobile
   const menuToggleButton = document.querySelector('.menu-toggle');
-  const navMobile = document.querySelector('.nav-mobile');
-  const navMobileClose = document.querySelector('.close-icon');
+  const navMobile = document.querySelector('.mobile-panel');
+  const navMobileClose = document.querySelector('.menu-toggle-close');
 
   if (menuToggleButton && navMobile) {
     menuToggleButton.addEventListener('click', function () {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (navMobileClose && navMobile) {
     navMobileClose.addEventListener('click', function () {
       navMobile.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggleButton.setAttribute('aria-expanded', 'false');
     });
   }
 
