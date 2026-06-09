@@ -68,7 +68,7 @@ Text Domain: nathalie-mota
     --font-title: 'Space Mono', monospace;
     --font-body: 'Poppins', sans-serif;
 
-    /* Couleurs — valeurs exactes Figma */
+    /* Couleurs — valeurs Figma */
     --color-red: #E00000;
     --color-red-2: #FE5858;
     --color-red-3: #FFD6D6;
@@ -104,6 +104,10 @@ body {
     font-size: 14px;
     color: var(--color-black);
     background: var(--color-white);
+}
+
+.site-main {
+    height: calc(100vh - var(--header-height));
 }
 
 /* ============================================
@@ -229,7 +233,6 @@ img {
     font-size: 14px;
     text-transform: uppercase;
     color: var(--color-black);
-
 }
 
 /* ============================================
@@ -324,7 +327,7 @@ img {
 
 /* ============================================
     MENU MOBILE 
-   ============================================*/
+============================================*/
 
 .menu-toggle,
 .mobile-panel {
@@ -423,3 +426,47 @@ img {
         line-height: 2.2;
     }
 }
+
+/* ============================================
+    PAGE PHOTO
+   ============================================ */
+.single-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+
+
+    .single-photo__container {
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
+        gap: 20px;
+    }
+
+    .single-bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
+        gap: 20px;
+        padding: 40px 20px;
+
+        .card-photo a {
+            position: relative;
+        }
+
+        .card-photo__thumbnail {
+            /* position: absolute; */
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            /* bottom: 100%; */
+            /* left: 20px; */
+        }
+
+        .card-photo a:hover .card-photo__thumbnail {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
