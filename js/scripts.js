@@ -4,16 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalClose = document.querySelector('.modal-close');
   const modalOverlay = document.querySelector('.modal-overlay');
   const menuToggle = document.querySelector('.menu-toggle');
+  const navMobile = document.querySelector('.mobile-panel');
+  const navMobileClose = document.querySelector('.menu-toggle-close');
 
   // Ouverture via clic sur contact
   function openModal() {
     if (modalOverlay) modalOverlay.classList.add('active');
-    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    // Fermer le menu mobile si ouvert pour afficher la modale sur mobile
-    const mobilePanel = document.querySelector('.mobile-panel');
-    const menuToggleBtn = document.querySelector('.menu-toggle');
-    if (mobilePanel) mobilePanel.classList.remove('active');
-    if (menuToggleBtn) menuToggleBtn.classList.remove('active');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.classList.remove('active');
+    }
+    if (navMobile) navMobile.classList.remove('active');
   }
 
   const contactLinks = document.querySelectorAll('.contact-link a');
@@ -67,25 +68,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // Menu mobile
-  const menuToggleButton = document.querySelector('.menu-toggle');
-  const navMobile = document.querySelector('.mobile-panel');
-  const navMobileClose = document.querySelector('.menu-toggle-close');
-
-  if (menuToggleButton && navMobile) {
-    menuToggleButton.addEventListener('click', function () {
-      const isExpanded = menuToggleButton.getAttribute('aria-expanded') === 'true';
-      menuToggleButton.setAttribute('aria-expanded', !isExpanded);
+  if (menuToggle && navMobile) {
+    menuToggle.addEventListener('click', function () {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
       navMobile.classList.toggle('active');
-      menuToggleButton.classList.toggle('active');
+      menuToggle.classList.toggle('active');
       document.body.classList.toggle('menu-open');
     });
   }
 
   // Fermeture du menu mobile via bouton close
-  if (navMobileClose && navMobile) {
+  if (navMobileClose && navMobile && menuToggle) {
     navMobileClose.addEventListener('click', function () {
       navMobile.classList.remove('active');
-      menuToggleButton.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.classList.remove('active');
     });
   }
 });
