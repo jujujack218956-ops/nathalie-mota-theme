@@ -57,8 +57,38 @@ get_header();
       </div>
   <?php endwhile;
   endif; ?>
-  <div class="page-photo__suggestion">
-    <!-- Suggestions d'autres photos apparentées-->
+  <div class="related-photos">
+    <p class="related-photos__title">Vous aimerez aussi</p>
+    <div class="related-photos__container">
+      <?php
+      // Récupérer la catégorie de la photo courante
+      $terms = get_the_terms(get_the_ID(), 'categorie');
+      $term_ids = $terms ? wp_list_pluck($terms, 'term_id') : array();
+
+      // Requête : 2 photos de la même catégorie, hors photo courante
+      $args = array(
+        'post_type'      => 'photo',
+        'posts_per_page' => 2,
+        'post__not_in'   => array(get_the_ID()),
+        'tax_query'      => array(
+          array(
+            'taxonomy' => 'categorie',
+            'field'    => 'term_id',
+            'terms'    => $term_ids,
+          ),
+        ),
+      );
+      $related_photos = new WP_Query($args);
+
+      // Boucle : pour chaque photo, on appelle le bloc réutilisable
+      if ($related_photos->have_posts()) :
+        while ($related_photos->have_posts()) : $related_photos->the_post();
+          get_template_part('template-parts/photo-block', null, ['show_meta' => false]);
+        endwhile;
+        wp_reset_postdata();
+      endif;
+      ?>
+    </div>
   </div>
 </div>
 <?php
