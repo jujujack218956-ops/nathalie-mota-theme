@@ -11,24 +11,27 @@ get_header();
           <h2 class="page-photo__title"><?php the_title(); ?></h2>
           <div class="page-photo__meta">
             <?php
-            $reference = get_post_meta(get_the_ID(), 'reference', true);
-            $categories = get_the_terms(get_the_ID(), 'categorie');
-            $formats = get_the_terms(get_the_ID(), 'format');
-            $type = get_post_meta(get_the_ID(), 'type', true);
+            $id = get_the_ID();
+            $reference = get_post_meta($id, 'reference', true);
+            $categories = get_the_terms($id, 'categorie');
+            $formats = get_the_terms($id, 'format');
+            $type = get_post_meta($id, 'type', true);
             $date = get_the_date('Y');
+            $category_name = ($categories && !is_wp_error($categories)) ? $categories[0]->name : '';
+            $format_name   = ($formats && !is_wp_error($formats)) ? $formats[0]->name : '';
             ?>
-            <p class="page-photo__reference"><span>Référence :</span> <?php echo $reference; ?></p>
-            <p class="page-photo__category"><span>Catégorie :</span> <?php echo $categories[0]->name; ?></p>
-            <p class="page-photo__format"><span>Format :</span> <?php echo $formats[0]->name; ?></p>
-            <p class="page-photo__type"><span>Type :</span> <?php echo $type; ?></p>
-            <p class="page-photo__date"><span>Année :</span> <?php echo $date; ?></p>
+            <p class="page-photo__reference"><span>Référence :</span> <?php echo esc_html($reference); ?></p>
+            <p class="page-photo__category"><span>Catégorie :</span> <?php echo esc_html($category_name); ?></p>
+            <p class="page-photo__format"><span>Format :</span> <?php echo esc_html($format_name); ?></p>
+            <p class="page-photo__type"><span>Type :</span> <?php echo esc_html($type); ?></p>
+            <p class="page-photo__date"><span>Année :</span> <?php echo esc_html($date); ?></p>
           </div>
         </div>
         <div class="page-photo__image">
           <?php the_post_thumbnail('full'); ?> </div>
       </div>
-      <div class="page-photo__single-bottom ">
-        <p class="page-photo__interet">Cette photo vous intéresse? <button class="contact-photo" type="button" data-ref="<?php echo $reference; ?>">Contact</button></p>
+      <div class="page-photo__single-bottom">
+        <p class="page-photo__interet">Cette photo vous intéresse? <button class="contact-photo" type="button" data-ref="<?php echo esc_attr($reference); ?>">Contact</button></p>
         <div class="card-photo">
           <?php $previous_post = get_previous_post(); ?>
           <?php $next_post = get_next_post(); ?>

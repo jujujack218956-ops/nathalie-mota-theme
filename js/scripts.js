@@ -43,14 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+  // Fermeture modale
+  function closeModal() {
+    if (modalOverlay) modalOverlay.classList.remove('active');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+  }
 
   // Fermeture via bouton close
   if (modalClose && modalOverlay) {
     modalClose.addEventListener('click', function () {
-      modalOverlay.classList.remove('active');
-      if (menuToggle) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
+      closeModal();
     });
   }
 
@@ -58,10 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modalOverlay) {
     modalOverlay.addEventListener('click', function (e) {
       if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
-        if (menuToggle) {
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
+        closeModal();
       }
     });
   }
