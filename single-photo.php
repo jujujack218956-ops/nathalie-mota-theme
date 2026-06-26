@@ -36,7 +36,7 @@ get_header();
           <?php $previous_post = get_previous_post(); ?>
           <?php $next_post = get_next_post(); ?>
           <?php if ($previous_post) : ?>
-            <a href="<?php echo get_permalink($previous_post->ID); ?>" class="card-photo__previous" aria-label="Photo précédente"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+            <a href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>" class="card-photo__previous" aria-label="Photo précédente"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
                 <line x1="33" y1="12" x2="3" y2="12"></line>
                 <polyline points="6 8 3 12 6 16"></polyline>
               </svg>
@@ -47,7 +47,7 @@ get_header();
 
           <?php endif; ?>
           <?php if ($next_post) : ?>
-            <a href="<?php echo get_permalink($next_post->ID); ?>" class="card-photo__next" aria-label="Photo suivante"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+            <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="card-photo__next" aria-label="Photo suivante"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
                 <line x1="3" y1="12" x2="33" y2="12"></line>
                 <polyline points="30 8 33 12 30 16"></polyline>
               </svg>
