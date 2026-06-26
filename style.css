@@ -461,7 +461,7 @@ img {
 .page-photo__container {
     display: flex;
     flex-direction: row;
-    height: calc(100vh - var(--header-height) - var(--page-photo-padding-height));
+    /*height: calc(100vh - var(--header-height) - var(--page-photo-padding-height));*/
     gap: var(--column-gap);
 }
 
@@ -577,4 +577,19 @@ img {
     height: 100%;
     object-fit: cover;
     /* la vignette remplit le conteneur */
+}
+
+/* ============================================
+    HERO
+   ============================================ */
+.home-hero {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
