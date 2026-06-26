@@ -1,6 +1,6 @@
 <div class="photo-block">
-  <a href="<?php the_permalink(); ?>">
-    <?php the_post_thumbnail('medium'); ?>
+  <a href="<?php the_permalink(); ?>" class="photo-block__link">
+    <?php the_post_thumbnail('medium_large', ['class' => 'photo-block__image']); ?>
   </a>
 
   <?php $show_meta = $args['show_meta'] ?? true; ?>
