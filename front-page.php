@@ -32,7 +32,7 @@ get_header();
     endif;
     ?>
   </div>
-  </div>
+  <button class="load-more" id="load-more" data-offset="8" aria-label="Charger plus de photos">Charger plus</button>
 </main>
 
 <?php

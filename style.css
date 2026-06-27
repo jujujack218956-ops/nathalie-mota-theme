@@ -111,6 +111,10 @@ body {
     min-height: calc(100vh - var(--header-height));
 }
 
+.home-main {
+    padding-block: 2rem;
+}
+
 /* ============================================
    TYPOGRAPHIE
    ============================================ */
@@ -304,13 +308,18 @@ img {
     overflow: visible;
 }
 
+/* ============================================
+     CTA
+   ============================================ */
 
-.wpcf7-submit {
+.wpcf7-submit,
+.load-more {
     margin-top: 1.25rem;
 }
 
 .wpcf7-submit,
-.contact-photo {
+.contact-photo,
+.load-more {
     padding: 0.5rem 0.9375rem;
     width: 100%;
     font-family: var(--font-title);
@@ -325,9 +334,18 @@ img {
 }
 
 .wpcf7-submit:hover,
-.contact-photo:hover {
+.contact-photo:hover,
+.load-more:hover {
     background-color: var(--color-black);
     color: var(--color-white);
+}
+
+.load-more {
+    width: 17.5rem;
+    height: 3.125rem;
+    margin-inline: auto;
+    display: block;
+    margin-bottom: 1.25rem;
 }
 
 .wpcf7-form-control {
