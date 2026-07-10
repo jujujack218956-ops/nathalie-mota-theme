@@ -8,34 +8,35 @@ get_header();
     <?php if ($image_hero) : ?>
       <?php echo wp_get_attachment_image($image_hero['ID'], 'large'); ?>
     <?php endif; ?>
+    <h1 class="home-hero__title">photographe event</h1>
   </div>
 
   <div class="filter">
-    <?php $categories = get_terms(array(
-      'taxonomy'   => 'categorie',
-      'hide_empty' => true,
-    )); ?>
-    <label for="filter-category">Catégories</label>
-    <select id="filter-category" name="filter-category">
-      <option value="">Toutes les catégories</option>
-      <?php foreach ($categories as $category) : ?>
-        <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
-      <?php endforeach; ?>
-    </select>
+    <div class="filter__group">
+      <?php $categories = get_terms(array(
+        'taxonomy'   => 'categorie',
+        'hide_empty' => true,
+      )); ?>
+      <select id="filter-category" name="filter-category" aria-label="Filtrer par catégorie">
+        <option value="">catégories</option>
+        <?php foreach ($categories as $category) : ?>
+          <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
+        <?php endforeach; ?>
+      </select>
 
-    <?php $formats = get_terms(array(
-      'taxonomy'   => 'format',
-      'hide_empty' => true,
-    )); ?>
-    <label for="filter-format">Formats</label>
-    <select id="filter-format" name="filter-format">
-      <option value="">Tous les formats</option>
-      <?php foreach ($formats as $format) : ?>
-        <option value="<?php echo esc_attr($format->term_id); ?>"><?php echo esc_html($format->name); ?></option> <?php endforeach; ?>
-    </select>
+      <?php $formats = get_terms(array(
+        'taxonomy'   => 'format',
+        'hide_empty' => true,
+      )); ?>
+      <select id="filter-format" name="filter-format" aria-label="Filtrer par format">
+        <option value="">formats</option>
+        <?php foreach ($formats as $format) : ?>
+          <option value="<?php echo esc_attr($format->term_id); ?>"><?php echo esc_html($format->name); ?></option> <?php endforeach; ?>
+      </select>
+    </div>
 
-    <label for="filter-sort">Trier par</label>
-    <select id="filter-sort" name="filter-sort">
+    <select id="filter-sort" class="filter__sort" name="filter-sort" aria-label="Trier par date croissante ou décroissante">
+      <option value="">trier par</option>
       <option value="desc">A partir des plus récentes</option>
       <option value="asc">A partir des plus anciennes</option>
     </select>

@@ -8,7 +8,8 @@ function chargerPhotos(offset, replace) {
   const format = document.querySelector('#filter-format').value;
 
   // 2. On construit UNE seule URL, puis on y ajoute les filtres si besoin
-  let url = `${nathalie_mota_home.rest_url}wp/v2/photo?per_page=8&offset=${offset}&order=${order}`;
+  let url = `${nathalie_mota_home.rest_url}wp/v2/photo?per_page=8&offset=${offset}`;
+  if (order) url += `&order=${order}`;
   if (category) url += `&categorie=${category}`;
   if (format) url += `&format-photo=${format}`;
 
