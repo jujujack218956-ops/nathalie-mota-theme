@@ -1,16 +1,17 @@
 <div class="photo-block">
+
   <a href="<?php the_permalink(); ?>" class="photo-block__link">
     <?php the_post_thumbnail('medium_large', ['class' => 'photo-block__image']); ?>
   </a>
 
-  <?php $show_meta = $args['show_meta'] ?? true; ?>
-  <?php if ($show_meta) : ?>
-    <h3 class="photo-block__title"><?php echo get_the_title(); ?></h3>
-    <?php
-    $terms = get_the_terms(get_the_ID(), 'categorie');
-    if ($terms && !is_wp_error($terms)) : ?>
-      <p class="photo-block__category"><?php echo esc_html($terms[0]->name); ?></p>
-    <?php endif; ?>
+
+  <?php $reference = get_post_meta(get_the_ID(), 'reference', true);
+  if ($reference && !is_wp_error($reference)) : ?>
+    <p class="photo-block__reference"><?php echo esc_html($reference); ?></p>
+  <?php endif; ?>
+  <?php $terms = get_the_terms(get_the_ID(), 'categorie');
+  if ($terms && !is_wp_error($terms)) : ?>
+    <p class="photo-block__category"><?php echo esc_html($terms[0]->name); ?></p>
   <?php endif; ?>
 
 

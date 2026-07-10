@@ -594,7 +594,7 @@ img {
 .related-photos .photo-block {
     flex: 1;
     overflow: hidden;
-    aspect-ratio: 564 / 495;
+    aspect-ratio: 1 / 1;
 }
 
 /* ============================================

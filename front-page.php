@@ -10,6 +10,37 @@ get_header();
     <?php endif; ?>
   </div>
 
+  <div class="filter">
+    <?php $categories = get_terms(array(
+      'taxonomy'   => 'categorie',
+      'hide_empty' => true,
+    )); ?>
+    <label for="filter-category">Catégories</label>
+    <select id="filter-category" name="filter-category">
+      <option value="">Toutes les catégories</option>
+      <?php foreach ($categories as $category) : ?>
+        <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
+      <?php endforeach; ?>
+    </select>
+
+    <?php $formats = get_terms(array(
+      'taxonomy'   => 'format',
+      'hide_empty' => true,
+    )); ?>
+    <label for="filter-format">Formats</label>
+    <select id="filter-format" name="filter-format">
+      <option value="">Tous les formats</option>
+      <?php foreach ($formats as $format) : ?>
+        <option value="<?php echo esc_attr($format->term_id); ?>"><?php echo esc_html($format->name); ?></option> <?php endforeach; ?>
+    </select>
+
+    <label for="filter-sort">Trier par</label>
+    <select id="filter-sort" name="filter-sort">
+      <option value="desc">A partir des plus récentes</option>
+      <option value="asc">A partir des plus anciennes</option>
+    </select>
+  </div>
+
   <?php
   $args = array(
     'post_type'      => 'photo',
