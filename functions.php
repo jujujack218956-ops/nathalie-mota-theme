@@ -39,6 +39,17 @@ function nathalie_mota_enqueue()
       'rest_url' => rest_url(),
     ));
   }
+
+  // Lightbox : accueil + page d'une photo (photos apparentées)
+  if (is_front_page() || is_singular('photo')) {
+    wp_enqueue_script(
+      'nathalie-mota-lightbox',
+      get_stylesheet_directory_uri() . '/js/lightbox.js',
+      [],
+      '1.0.0',
+      true
+    );
+  }
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue');
 
@@ -60,6 +71,16 @@ add_action('rest_api_init', function () {
         return $thumbnail_url ? $thumbnail_url[0] : null;
       }
       return null;
+    },
+  ));
+});
+
+
+add_action('rest_api_init', function () {
+  register_rest_field('photo', 'image_full', array(
+    'get_callback' => function ($post) {
+      $thumbnail_id = get_post_thumbnail_id($post['id']);
+      return $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'full') : null;
     },
   ));
 });

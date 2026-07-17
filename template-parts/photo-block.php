@@ -1,22 +1,15 @@
+<?php
+$reference = get_post_meta(get_the_ID(), 'reference', true);
+$terms = get_the_terms(get_the_ID(), 'categorie');
+$categorie_nom = ($terms && !is_wp_error($terms)) ? $terms[0]->name : '';
+?>
 <div class="photo-block">
 
   <a href="<?php the_permalink(); ?>" class="photo-block__link">
     <?php the_post_thumbnail('medium_large', ['class' => 'photo-block__image']); ?>
   </a>
 
-
-  <?php $reference = get_post_meta(get_the_ID(), 'reference', true);
-  if ($reference && !is_wp_error($reference)) : ?>
-    <p class="photo-block__reference"><?php echo esc_html($reference); ?></p>
-  <?php endif; ?>
-  <?php $terms = get_the_terms(get_the_ID(), 'categorie');
-  if ($terms && !is_wp_error($terms)) : ?>
-    <p class="photo-block__category"><?php echo esc_html($terms[0]->name); ?></p>
-  <?php endif; ?>
-
-
-
-  <!-- <div class="photo-block__overlay">
+  <div class="photo-block__overlay">
     <a class="photo-block__eye" href="<?php the_permalink(); ?>" aria-label="Voir la photo">
       <svg viewBox="0 0 46 32" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <path d="M45.9081 15.1504C41.9937 5.94703 33.0015 0 23 0C12.9985 0 4.00649 5.94685 0.0919102 15.1504C-0.0306367 15.4385 -0.0306367 15.7638 0.0919102 16.0518C4.00622 25.2563 12.9983 31.2038 23 31.2038C33.0019 31.2038 41.994 25.2563 45.9081 16.0518C46.0306 15.7638 46.0306 15.4385 45.9081 15.1504ZM23 28.9008C14.088 28.9008 6.05933 23.6968 2.40862 15.6013C6.05942 7.50654 14.0883 2.30314 23 2.30314C31.9119 2.30314 39.9407 7.50654 43.5914 15.6011C39.9407 23.6967 31.912 28.9008 23 28.9008Z" />
@@ -24,7 +17,7 @@
         <path d="M22.9999 10.9192C20.4179 10.9192 18.317 13.0199 18.317 15.6021C18.317 16.238 18.8325 16.7536 19.4685 16.7536C20.1046 16.7536 20.6201 16.238 20.6201 15.6021C20.6201 14.2899 21.6876 13.2222 22.9999 13.2222C23.636 13.2222 24.1515 12.7066 24.1515 12.0707C24.1515 11.4346 23.6359 10.9192 22.9999 10.9192Z" />
       </svg>
     </a>
-    <button class="photo-block__fullscreen" type="button" data-id="<?php the_ID(); ?>" aria-label="Afficher en plein écran">
+    <button class="photo-block__fullscreen" type="button" data-full="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), 'full')); ?>" data-title="<?php echo esc_attr(get_the_title()); ?>" data-reference="<?php echo esc_attr($reference); ?>" data-category="<?php echo esc_attr($categorie_nom); ?>" aria-label="Afficher en plein écran">
       <svg viewBox="0 0 34 34" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <circle cx="17" cy="17" r="17" fill="black" stroke="none" />
         <g stroke="white" stroke-width="1.5">
@@ -39,5 +32,11 @@
         </g>
       </svg>
     </button>
-  </div> -->
+    <?php if ($reference) : ?>
+      <p class="photo-block__reference"><?php echo esc_html($reference); ?></p>
+    <?php endif; ?>
+    <?php if ($categorie_nom) : ?>
+      <p class="photo-block__category"><?php echo esc_html($categorie_nom); ?></p>
+    <?php endif; ?>
+  </div>
 </div>

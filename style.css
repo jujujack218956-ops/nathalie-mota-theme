@@ -683,3 +683,196 @@ img {
     background-repeat: no-repeat;
     background-position: right 1rem center;
 }
+
+
+/* ============================================
+    OVERLAY SUR LES PHOTOS
+   ============================================ */
+.photo-block {
+    position: relative;
+    /* repère pour positionner l'overlay */
+}
+
+.photo-block__overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* voile noir */
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ← centre l'œil */
+    padding: 1rem;
+    /* marge pour les coins */
+}
+
+.photo-block__eye svg {
+    width: 2.5rem;
+    height: auto;
+}
+
+.photo-block__fullscreen svg {
+    width: 1.5rem;
+    height: auto;
+}
+
+.photo-block__fullscreen {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    /* enlève le fond blanc */
+    border: none;
+    /* enlève la bordure */
+    padding: 0;
+    /* enlève l'espace interne */
+    cursor: pointer;
+    /* garde le curseur main */
+}
+
+.photo-block__reference {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+}
+
+.photo-block__category {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    font-size: 0.875rem;
+}
+
+.photo-block:hover .photo-block__overlay,
+.photo-block:focus-within .photo-block__overlay {
+    opacity: 1;
+    /* visible au survol… et au focus clavier grâce au focus-within */
+}
+
+/* ============================================
+    LIGHTBOX
+   ============================================ */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* fond noir quasi opaque */
+}
+
+.lightbox__inner {
+    /* zone de contenu centrée : croix et flèche droite partagent le même bord */
+    max-width: 75rem;
+    margin-inline: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.lightbox__top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lightbox__body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.lightbox__figure {
+    position: relative;
+    /* repère pour caler infos et flèches sur les bords de la photo */
+    margin: 0;
+}
+
+.lightbox__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox__container img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-white);
+    font-family: var(--font-title);
+}
+
+.lightbox__prev,
+.lightbox__next {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.lightbox__close {
+    /* dans la barre du haut, calée à droite → alignée avec la flèche « Suivante » */
+    padding: 0;
+}
+
+.lightbox__close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+}
+
+.lightbox__arrow {
+    width: 2.75rem;
+    height: auto;
+}
+
+.lightbox__reference,
+.lightbox__category {
+    position: absolute;
+    top: calc(100% + 1rem);
+    /* juste sous la photo, calé sur ses bords */
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-title);
+    text-transform: uppercase;
+}
+
+.lightbox__reference {
+    left: 0;
+}
+
+.lightbox__category {
+    right: 0;
+}
+
+.lightbox__loader {
+    width: 3rem;
+    height: 3rem;
+    border: 0.25rem solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--color-white);
+    border-radius: 50%;
+    animation: lightbox-spin 0.8s linear infinite;
+}
+
+@keyframes lightbox-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
